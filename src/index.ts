@@ -34,14 +34,39 @@ program
     './README.md',
   )
   .action(async options => {
-    console.log(chalk.green('Generating README...'));
     try {
-      const generator = new ReadmeGenerator(options);
-      const readme = generator.generate();
+      console.log(chalk.green('Generating README...'));
+
+      const socialPlatforms: Record<string, string> = {};
+      if (options.social) {
+        for (const social of options.social) {
+          const [platform, username] = social.split(':');
+          if (platform && username) {
+            socialPlatforms[platform.trim().toLowerCase()] = username.trim();
+          }
+        }
+      }
+
+      const { username, theme, stats, streaks, trophies } = options;
+
+      const readmeGenerator = new ReadmeGenerator({
+        username,
+        theme,
+        stats,
+        streaks,
+        trophies,
+        socialPlatforms,
+      });
+
+      const readme = await readmeGenerator.generate();
       await writeReadmeFile(readme, options.output);
-      console.log(`README generated successfully at ${options.output}`);
+
+      console.log(
+        chalk.green(`README generated successfully at ${options.output}`),
+      );
     } catch (error) {
-      console.error('Error generating README:', error);
+      console.error(chalk.red('Error generating README:'), error);
+      process.exit(1);
     }
   });
 

@@ -1,8 +1,11 @@
-import { mkdir } from 'fs/promises';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { mkdir } from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 
-export async function writeReadmeFile(content: string, outputPath: string = './README.md'): Promise<void> {
+export async function writeReadmeFile(
+  content: string,
+  outputPath = './README.md',
+) {
   const resolvedPath = path.resolve(outputPath);
   try {
     await mkdir(path.dirname(resolvedPath), { recursive: true });

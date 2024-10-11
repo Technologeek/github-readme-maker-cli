@@ -4,6 +4,7 @@ import {
   StreaksSection,
   TrophiesSection,
 } from './sections';
+import socialIcons from './utils/socialIcons';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
 interface ReadmeOptions {
@@ -12,6 +13,7 @@ interface ReadmeOptions {
   stats?: boolean;
   streaks?: boolean;
   trophies?: boolean;
+  socialPlatforms?: Record<string, string>;
 }
 
 export class ReadmeGenerator {
@@ -29,7 +31,13 @@ export class ReadmeGenerator {
     }
     return getRandomTheme();
   }
-  private generateSocialLinks(social?: string): string[] {}
+
+  private generateSocialLinks(platforms: Record<string, string>): string {
+    return Object.entries(platforms)
+      .filter(([platform, _]) => platform in socialIcons)
+      .map(([platform, username]) => socialIcons[platform](username))
+      .join('\n');
+  }
 
   private initializeSections() {
     if (this.options.stats) {
@@ -45,14 +53,28 @@ export class ReadmeGenerator {
     }
   }
 
-  generate(): string {
-    let readme = `# Hi there! 👋 I'm ${this.options.username}\n\n`;
-    readme += `Theme: ${this.theme}\n\n`;
+  public async generate(): Promise<string> {
+    try {
+      let readme = `# Hi there 👋, I'm ${this.options.username}\n\n`;
 
-    for (const section of this.sections) {
-      readme += section.generate();
+      // Generate content for each section
+      for (const section of this.sections) {
+        readme += await section.generate();
+      }
+
+      // Add social media links if provided
+      if (
+        this.options.socialPlatforms &&
+        Object.keys(this.options.socialPlatforms).length > 0
+      ) {
+        readme += '\n\n## Connect with me\n\n';
+        readme += this.generateSocialLinks(this.options.socialPlatforms);
+      }
+
+      return readme;
+    } catch (error) {
+      console.error('Error generating README:', error);
+      throw error; // Re-throw the error to be handled by the caller
     }
-
-    return readme;
   }
 }

@@ -1,10 +1,10 @@
-import { Theme } from "../utils/themes";
+import type { Theme } from '../utils/themes';
 
 export abstract class BaseSection {
-    constructor(
-        protected username: string,
-        protected theme: Theme
-    ) { }
+  constructor(
+    protected username: string,
+    protected theme: Theme,
+  ) {}
 
-    abstract generate(): string;
+  abstract generate(): string;
 }
