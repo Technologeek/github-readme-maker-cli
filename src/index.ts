@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
 import chalk from 'chalk';
+import { Command } from 'commander';
 import { ReadmeGenerator } from './ReadmeGenerator';
 import { writeReadmeFile } from './utils/fileUtils';
 import { SUPPORTED_THEMES } from './utils/themes';
@@ -17,12 +17,23 @@ program
   .command('generate')
   .description(chalk.yellow('🚀 Generate a GitHub Profile README'))
   .requiredOption('-u, --username <username>', chalk.cyan('👤 GitHub username'))
-  .option('-t, --theme <theme>', chalk.magenta(`🎨 Theme for the README (${SUPPORTED_THEMES.join(', ')})`))
+  .option(
+    '-t, --theme <theme>',
+    chalk.magenta(`🎨 Theme for the README (${SUPPORTED_THEMES.join(', ')})`),
+  )
   .option('-s, --stats', chalk.yellow('📊 Include GitHub stats'))
   .option('-k, --streaks', chalk.green('🔥 Include GitHub streaks'))
   .option('-r, --trophies', chalk.blue('🏆 Include GitHub trophies'))
-  .option('-o, --output <path>', chalk.red('📄 Output file path'), './README.md')
-  .action(async (options) => {
+  .option(
+    '-m, --social <socials...>',
+    chalk.cyan('🌐 Include social media links (format: platform:username)'),
+  )
+  .option(
+    '-o, --output <path>',
+    chalk.red('📄 Output file path'),
+    './README.md',
+  )
+  .action(async options => {
     console.log(chalk.green('Generating README...'));
     try {
       const generator = new ReadmeGenerator(options);
@@ -39,6 +50,8 @@ program.parse(process.argv);
 
 // If no command is provided, show help
 if (!process.argv.slice(2).length) {
-  console.log(chalk.bgCyan.black('\n 🚀 GitHub Profile README Maker CLI 🚀 \n'));
+  console.log(
+    chalk.bgCyan.black('\n 🚀 GitHub Profile README Maker CLI 🚀 \n'),
+  );
   program.outputHelp();
 }

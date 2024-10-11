@@ -1,5 +1,10 @@
-import { BaseSection, StatsSection, StreaksSection, TrophiesSection } from './sections';
-import { Theme, getRandomTheme, isValidTheme } from './utils/themes';
+import {
+  type BaseSection,
+  StatsSection,
+  StreaksSection,
+  TrophiesSection,
+} from './sections';
+import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
 interface ReadmeOptions {
   username: string;
@@ -24,6 +29,7 @@ export class ReadmeGenerator {
     }
     return getRandomTheme();
   }
+  private generateSocialLinks(social?: string): string[] {}
 
   private initializeSections() {
     if (this.options.stats) {
@@ -33,7 +39,9 @@ export class ReadmeGenerator {
       this.sections.push(new StreaksSection(this.options.username, this.theme));
     }
     if (this.options.trophies) {
-      this.sections.push(new TrophiesSection(this.options.username, this.theme));
+      this.sections.push(
+        new TrophiesSection(this.options.username, this.theme),
+      );
     }
   }
 
