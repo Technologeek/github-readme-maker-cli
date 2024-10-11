@@ -1,6 +1,6 @@
 type SocialIconFunction = (username: string) => string;
 
-const socialIcons: Record<string, SocialIconFunction> = {
+export const socialIcons: Record<string, SocialIconFunction> = {
   behance: (username: string) =>
     `[![Behance](https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white)](https://behance.net/${username})`,
 
@@ -32,4 +32,21 @@ const socialIcons: Record<string, SocialIconFunction> = {
     `[![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=Reddit&logoColor=white)](https://reddit.com/user/${username})`,
 };
 
-export default socialIcons;
+export const fundingUrls: Record<string, string> = {
+  paypal: 'https://www.paypal.com/paypalme/',
+  'ko-fi': 'https://ko-fi.com/',
+  github: 'https://github.com/sponsors/',
+  patreon: 'https://www.patreon.com/',
+  'open-collective': 'https://opencollective.com/',
+  buymeacoffee: 'https://www.buymeacoffee.com/',
+};
+
+export const generateFundingLink = (
+  platform: string,
+  username: string,
+): string => {
+  const formattedPlatform = platform.toLowerCase().replace(/\s+/g, '-');
+  const baseUrl = fundingUrls[formattedPlatform] || '';
+  const url = baseUrl + username;
+  return `[![${platform}](https://img.shields.io/badge/Support%20me%20on-${formattedPlatform}-brightgreen?style=flat&logo=${formattedPlatform})](${url})`;
+};

@@ -4,8 +4,8 @@ import chalk from 'chalk';
 import { Command } from 'commander';
 import { ReadmeGenerator } from './ReadmeGenerator';
 import { writeReadmeFile } from './utils/fileUtils';
+import { parseKeyValuePairs } from './utils/fileUtils';
 import { SUPPORTED_THEMES } from './utils/themes';
-
 const program = new Command();
 
 program
@@ -29,46 +29,55 @@ program
     chalk.cyan('🌐 Include social media links (format: platform:username)'),
   )
   .option(
+    '-p, --tech <technologies...>',
+    chalk.magenta('💻 Technologies you know (space-separated)'),
+  )
+  .option(
     '-o, --output <path>',
     chalk.red('📄 Output file path'),
     './README.md',
   )
-  .action(async options => {
-    try {
-      console.log(chalk.green('Generating README...'));
+  .option(
+    '-f, --funding <links...>',
+    chalk.yellow('💰 Include funding links (format: platform:url)'),
+  )
+  .action(
+    async (options: {
+      username: string;
+      theme?: string;
+      stats?: boolean;
+      streaks?: boolean;
+      trophies?: boolean;
+      social?: string[];
+      funding?: string[];
+      tech?: string[];
+      output?: string;
+    }) => {
+      try {
+        console.log(chalk.green('Generating README...'));
 
-      const socialPlatforms: Record<string, string> = {};
-      if (options.social) {
-        for (const social of options.social) {
-          const [platform, username] = social.split(':');
-          if (platform && username) {
-            socialPlatforms[platform.trim().toLowerCase()] = username.trim();
-          }
-        }
+        const socialPlatforms = parseKeyValuePairs(options.social);
+        const fundingLinks = parseKeyValuePairs(options.funding);
+
+        const readmeGenerator = new ReadmeGenerator({
+          ...options,
+          socialPlatforms,
+          technologies: options.tech || [],
+          fundingLinks,
+        });
+
+        const readme = await readmeGenerator.generate();
+        await writeReadmeFile(readme, options.output);
+
+        console.log(
+          chalk.green(`README generated successfully at ${options.output}`),
+        );
+      } catch (error) {
+        console.error(chalk.red('Error generating README:'), error);
+        process.exit(1);
       }
-
-      const { username, theme, stats, streaks, trophies } = options;
-
-      const readmeGenerator = new ReadmeGenerator({
-        username,
-        theme,
-        stats,
-        streaks,
-        trophies,
-        socialPlatforms,
-      });
-
-      const readme = await readmeGenerator.generate();
-      await writeReadmeFile(readme, options.output);
-
-      console.log(
-        chalk.green(`README generated successfully at ${options.output}`),
-      );
-    } catch (error) {
-      console.error(chalk.red('Error generating README:'), error);
-      process.exit(1);
-    }
-  });
+    },
+  );
 
 // Parse arguments
 program.parse(process.argv);

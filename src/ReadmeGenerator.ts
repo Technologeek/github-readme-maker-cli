@@ -4,7 +4,7 @@ import {
   StreaksSection,
   TrophiesSection,
 } from './sections';
-import socialIcons from './utils/socialIcons';
+import { generateFundingLink, socialIcons } from './utils/socialIcons';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
 interface ReadmeOptions {
@@ -14,6 +14,8 @@ interface ReadmeOptions {
   streaks?: boolean;
   trophies?: boolean;
   socialPlatforms?: Record<string, string>;
+  technologies?: string[];
+  fundingLinks?: Record<string, string>;
 }
 
 export class ReadmeGenerator {
@@ -39,6 +41,22 @@ export class ReadmeGenerator {
       .join('\n');
   }
 
+  private generateFundingLinks(platforms: Record<string, string>): string {
+    return Object.entries(platforms)
+      .map(([platform, username]) => generateFundingLink(platform, username))
+      .join(' ');
+  }
+
+  private generateTechnologies(technologies: string[]): string {
+    return technologies
+      .map(tech => {
+        //React Js -> react-js
+        const formattedTech = tech.toLowerCase().replace(/\s+/g, '-');
+        return `![${tech}](https://img.shields.io/badge/-${formattedTech}-05122A?style=flat&logo=${formattedTech})`;
+      })
+      .join(' ');
+  }
+
   private initializeSections() {
     if (this.options.stats) {
       this.sections.push(new StatsSection(this.options.username, this.theme));
@@ -61,14 +79,27 @@ export class ReadmeGenerator {
       for (const section of this.sections) {
         readme += await section.generate();
       }
+      //Add technologies if provided
+      if (this.options.technologies && this.options.technologies.length > 0) {
+        readme += '\n\n## Technologies I know\n\n';
+        readme += this.generateTechnologies(this.options.technologies);
+      }
 
-      // Add social media links if provided
+      // social media links
       if (
         this.options.socialPlatforms &&
         Object.keys(this.options.socialPlatforms).length > 0
       ) {
         readme += '\n\n## Connect with me\n\n';
         readme += this.generateSocialLinks(this.options.socialPlatforms);
+      }
+
+      if (
+        this.options.fundingLinks &&
+        Object.keys(this.options.fundingLinks).length > 0
+      ) {
+        readme += '\n\n## Support my work\n\n';
+        readme += this.generateFundingLinks(this.options.fundingLinks);
       }
 
       return readme;
