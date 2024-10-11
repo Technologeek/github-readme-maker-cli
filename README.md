@@ -1,40 +1,17 @@
-# Modern.js Package
+# Hi there! 👋 I'm Technologeek
 
-## Setup
+Theme: date_night
 
-Install the dependencies:
 
-```bash
-yarn install
-```
+## GitHub Stats
 
-## Get Started
+![Technologeek's GitHub stats](https://github-readme-stats.vercel.app/api?username=Technologeek&theme=date_night&hide_border=false&include_all_commits=false&count_private=false)
 
-Run and debug the module:
+## GitHub Streak
 
-```bash
-yarn dev
-```
+[![Technologeek's GitHub Streaks](https://github-readme-streak-stats.herokuapp.com?user=Technologeek&theme=date_night)](https://git.io/streak-stats)
 
-Build the module for production:
+    ## GitHub Trophies
 
-```bash
-yarn build
-```
-
-Enable optional features:
-
-```bash
-yarn new
-```
-
-Other commands:
-
-```bash
-yarn lint         # Lint and fix source files
-yarn change       # Add a new changeset
-yarn bump         # Update version and changelog via changeset
-yarn release      # Release the package
-```
-
-For more information, see the [Modern.js Module documentation](https://modernjs.dev/module-tools/en).
+    ![Technologeek's Trophies}](https://github-profile-trophy.vercel.app/?username=Technologeek&theme=date_night&no-frame=false&no-bg=true&margin-w=4)
+    
