@@ -6,6 +6,7 @@
 .env.*.local
 .history
 *.log*
+.yarn/install-state.gz
 
 node_modules/
 .yarn-integrity
