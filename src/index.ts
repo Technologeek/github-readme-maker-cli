@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { ReadmeGenerator } from './ReadmeGenerator';
 import { writeReadmeFile } from './utils/fileUtils';
 import { parseKeyValuePairs } from './utils/fileUtils';
+import { showAnimatedMessage } from './utils/showAnimatedMessage';
 import { SUPPORTED_THEMES } from './utils/themes';
 const program = new Command();
 
@@ -59,6 +60,7 @@ program
         const socialPlatforms = parseKeyValuePairs(options.social);
         const fundingLinks = parseKeyValuePairs(options.funding);
 
+        await showAnimatedMessage('Generating README...');
         const readmeGenerator = new ReadmeGenerator({
           ...options,
           socialPlatforms,
