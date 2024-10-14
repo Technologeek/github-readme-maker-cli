@@ -34,14 +34,19 @@ program
     chalk.magenta('💻 Technologies you know (space-separated)'),
   )
   .option(
-    '-o, --output <path>',
-    chalk.red('📄 Output file path'),
-    './README.md',
+    '-r, --top-repos',
+    chalk.cyanBright('📂 Include top contributed repositories'),
   )
+  .option('-v, --visitors', chalk.cyanBright('👀 Include visitors count'))
   .option('-l, --top-langs', chalk.green('💻 Include top languages'))
   .option(
     '-f, --funding <links...>',
     chalk.yellow('💰 Include funding links (format: platform:url)'),
+  )
+  .option(
+    '-o, --output <path>',
+    chalk.red('📄 Output file path'),
+    './README.md',
   )
   .action(
     async (options: {

@@ -3,7 +3,9 @@ import {
   StatsSection,
   StreaksSection,
   TopLangsSection,
+  TopReposSection,
   TrophiesSection,
+  VisitorsSection,
 } from './sections';
 import { generateFundingLink, socialIcons } from './utils/socialIcons';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
@@ -15,12 +17,20 @@ interface ReadmeOptions {
   streaks?: boolean;
   trophies?: boolean;
   topLangs?: boolean;
+  topRepos?: boolean;
+  visitors?: boolean;
   socialPlatforms?: Record<string, string>;
   technologies?: string[];
   fundingLinks?: Record<string, string>;
 }
 
-type SectionKeys = 'stats' | 'streaks' | 'trophies' | 'topLangs';
+type SectionKeys =
+  | 'stats'
+  | 'streaks'
+  | 'trophies'
+  | 'topLangs'
+  | 'topRepos'
+  | 'visitors';
 export class ReadmeGenerator {
   private sections: BaseSection[] = [];
   private theme: Theme;
@@ -35,6 +45,8 @@ export class ReadmeGenerator {
     streaks: StreaksSection,
     trophies: TrophiesSection,
     topLangs: TopLangsSection,
+    topRepos: TopReposSection,
+    visitors: VisitorsSection,
   };
 
   constructor(private options: ReadmeOptions) {
