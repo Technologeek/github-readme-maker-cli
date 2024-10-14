@@ -2427,9 +2427,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gprm@workspace:.":
+"gprm-cli@workspace:.":
   version: 0.0.0-use.local
-  resolution: "gprm@workspace:."
+  resolution: "gprm-cli@workspace:."
   dependencies:
     "@biomejs/biome": "npm:1.8.3"
     "@modern-js/module-tools": "npm:2.60.2"
