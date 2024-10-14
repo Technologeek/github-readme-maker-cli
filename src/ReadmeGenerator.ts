@@ -2,6 +2,7 @@ import {
   type BaseSection,
   StatsSection,
   StreaksSection,
+  TopLangsSection,
   TrophiesSection,
 } from './sections';
 import { generateFundingLink, socialIcons } from './utils/socialIcons';
@@ -13,14 +14,28 @@ interface ReadmeOptions {
   stats?: boolean;
   streaks?: boolean;
   trophies?: boolean;
+  topLangs?: boolean;
   socialPlatforms?: Record<string, string>;
   technologies?: string[];
   fundingLinks?: Record<string, string>;
 }
 
+type SectionKeys = 'stats' | 'streaks' | 'trophies' | 'topLangs';
 export class ReadmeGenerator {
   private sections: BaseSection[] = [];
   private theme: Theme;
+  private optionsMap: Record<
+    SectionKeys,
+    new (
+      username: string,
+      theme: Theme,
+    ) => BaseSection
+  > = {
+    stats: StatsSection,
+    streaks: StreaksSection,
+    trophies: TrophiesSection,
+    topLangs: TopLangsSection,
+  };
 
   constructor(private options: ReadmeOptions) {
     this.theme = this.resolveTheme(options.theme);
@@ -58,16 +73,10 @@ export class ReadmeGenerator {
   }
 
   private initializeSections() {
-    if (this.options.stats) {
-      this.sections.push(new StatsSection(this.options.username, this.theme));
-    }
-    if (this.options.streaks) {
-      this.sections.push(new StreaksSection(this.options.username, this.theme));
-    }
-    if (this.options.trophies) {
-      this.sections.push(
-        new TrophiesSection(this.options.username, this.theme),
-      );
+    for (const [key, SectionClass] of Object.entries(this.optionsMap)) {
+      if (this.options[key as SectionKeys]) {
+        this.sections.push(new SectionClass(this.options.username, this.theme));
+      }
     }
   }
 

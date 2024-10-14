@@ -38,6 +38,7 @@ program
     chalk.red('📄 Output file path'),
     './README.md',
   )
+  .option('-l, --top-langs', chalk.green('💻 Include top languages'))
   .option(
     '-f, --funding <links...>',
     chalk.yellow('💰 Include funding links (format: platform:url)'),
@@ -49,6 +50,7 @@ program
       stats?: boolean;
       streaks?: boolean;
       trophies?: boolean;
+      topLangs?: boolean;
       social?: string[];
       funding?: string[];
       tech?: string[];
