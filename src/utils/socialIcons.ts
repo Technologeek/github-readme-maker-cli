@@ -32,21 +32,28 @@ export const socialIcons: Record<string, SocialIconFunction> = {
     `[![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=Reddit&logoColor=white)](https://reddit.com/user/${username})`,
 };
 
-export const fundingUrls: Record<string, string> = {
-  paypal: 'https://www.paypal.com/paypalme/',
-  'ko-fi': 'https://ko-fi.com/',
-  github: 'https://github.com/sponsors/',
-  patreon: 'https://www.patreon.com/',
-  'open-collective': 'https://opencollective.com/',
-  buymeacoffee: 'https://www.buymeacoffee.com/',
+export const fundingIcons: Record<string, SocialIconFunction> = {
+  buymeacoffee: (username: string) =>
+    `[![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/${username})`,
+
+  paypal: (username: string) =>
+    `[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/${username})`,
+
+  patreon: (username: string) =>
+    `[![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/${username})`,
+
+  kofi: (username: string) =>
+    `[![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/${username})`,
 };
 
-export const generateFundingLink = (
-  platform: string,
-  username: string,
+export const generateFundingLinks = (
+  platforms: Record<string, string>,
 ): string => {
-  const formattedPlatform = platform.toLowerCase().replace(/\s+/g, '-');
-  const baseUrl = fundingUrls[formattedPlatform] || '';
-  const url = baseUrl + username;
-  return `[![${platform}](https://img.shields.io/badge/Support%20me%20on-${formattedPlatform}-brightgreen?style=flat&logo=${formattedPlatform})](${url})`;
+  return Object.entries(platforms)
+    .filter(([_, username]) => username !== '')
+    .map(([platform, username]) => {
+      const iconFunction = fundingIcons[platform.toLowerCase()];
+      return iconFunction ? iconFunction(username) : '';
+    })
+    .join(' ');
 };

@@ -8,7 +8,7 @@ import {
   VisitorsSection,
 } from './sections';
 import { fetchTechData } from './utils/fetchTechData';
-import { generateFundingLink, socialIcons } from './utils/socialIcons';
+import { generateFundingLinks, socialIcons } from './utils/socialIcons';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
 interface ReadmeOptions {
@@ -79,12 +79,6 @@ export class ReadmeGenerator {
       .join('\n');
   }
 
-  private generateFundingLinks(platforms: Record<string, string>): string {
-    return Object.entries(platforms)
-      .map(([platform, username]) => generateFundingLink(platform, username))
-      .join(' ');
-  }
-
   public generateTechnologies(technologies: string[]): string {
     if (!this.techData) {
       console.warn('Tech data not available');
@@ -125,7 +119,7 @@ export class ReadmeGenerator {
       for (const section of this.sections) {
         readme += await section.generate();
       }
-      //Add technologies if provided
+      // technologies
       if (this.options.technologies && this.options.technologies.length > 0) {
         readme += '\n\n## Technologies I know\n\n';
         readme += this.generateTechnologies(this.options.technologies);
@@ -145,7 +139,7 @@ export class ReadmeGenerator {
         Object.keys(this.options.fundingLinks).length > 0
       ) {
         readme += '\n\n## Support my work\n\n';
-        readme += this.generateFundingLinks(this.options.fundingLinks);
+        readme += generateFundingLinks(this.options.fundingLinks);
       }
 
       return readme;
