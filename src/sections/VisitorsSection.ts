@@ -3,8 +3,9 @@ import { BaseSection } from './BaseSection';
 export class VisitorsSection extends BaseSection {
   generate(): string {
     return `
-## 👀 Visitors Count
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=${this.username}.${this.username})
+## 👀 Profile Views
+
+[![](https://visitcount.itsvg.in/api?id=${this.username}&icon=0&color=2)](https://visitcount.itsvg.in)
 `;
   }
 }

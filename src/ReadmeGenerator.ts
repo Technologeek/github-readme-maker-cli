@@ -7,6 +7,7 @@ import {
   TrophiesSection,
   VisitorsSection,
 } from './sections';
+import { fetchTechData } from './utils/fetchTechData';
 import { generateFundingLink, socialIcons } from './utils/socialIcons';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
@@ -32,6 +33,8 @@ type SectionKeys =
   | 'topRepos'
   | 'visitors';
 export class ReadmeGenerator {
+  // biome-ignore lint/suspicious/noExplicitAny: We need to keep this flexible to handle any data structure
+  private techData: any = null;
   private sections: BaseSection[] = [];
   private theme: Theme;
   private optionsMap: Record<
@@ -52,8 +55,16 @@ export class ReadmeGenerator {
   constructor(private options: ReadmeOptions) {
     this.theme = this.resolveTheme(options.theme);
     this.initializeSections();
+    this.initTechData();
   }
 
+  private async initTechData() {
+    try {
+      this.techData = await fetchTechData();
+    } catch (error) {
+      console.error('Failed to initialize tech data:', error);
+    }
+  }
   private resolveTheme(theme?: string): Theme {
     if (theme && isValidTheme(theme)) {
       return theme;
@@ -74,12 +85,26 @@ export class ReadmeGenerator {
       .join(' ');
   }
 
-  private generateTechnologies(technologies: string[]): string {
+  public generateTechnologies(technologies: string[]): string {
+    if (!this.techData) {
+      console.warn('Tech data not available');
+      return '';
+    }
+
     return technologies
       .map(tech => {
-        //React Js -> react-js
-        const formattedTech = tech.toLowerCase().replace(/\s+/g, '-');
-        return `![${tech}](https://img.shields.io/badge/-${formattedTech}-05122A?style=flat&logo=${formattedTech})`;
+        const lowercaseTech = tech.toLowerCase();
+        for (const category in this.techData) {
+          const found = this.techData[category].find(
+            (item: { label: string }) =>
+              item.label.toLowerCase() === lowercaseTech,
+          );
+          if (found) {
+            return found.url;
+          }
+        }
+        // Fallback for technologies not found in the data
+        return `![${tech}](https://img.shields.io/badge/-${tech}-lightgrey?style=for-the-badge)`;
       })
       .join(' ');
   }

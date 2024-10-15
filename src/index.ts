@@ -24,7 +24,7 @@ program
   )
   .option('-s, --stats', chalk.yellow('📊 Include GitHub stats'))
   .option('-k, --streaks', chalk.green('🔥 Include GitHub streaks'))
-  .option('-r, --trophies', chalk.blue('🏆 Include GitHub trophies'))
+  .option('-c, --trophies', chalk.blue('🏆 Include GitHub trophies'))
   .option(
     '-m, --social <socials...>',
     chalk.cyan('🌐 Include social media links (format: platform:username)'),
@@ -38,7 +38,7 @@ program
     chalk.cyanBright('📂 Include top contributed repositories'),
   )
   .option('-v, --visitors', chalk.cyanBright('👀 Include visitors count'))
-  .option('-l, --top-langs', chalk.green('💻 Include top languages'))
+  .option('-l, --top-langs', chalk.green('🗂 Include top languages'))
   .option(
     '-f, --funding <links...>',
     chalk.yellow('💰 Include funding links (format: platform:url)'),
