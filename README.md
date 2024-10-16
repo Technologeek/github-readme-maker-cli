@@ -154,3 +154,115 @@ This project is [MIT](https://github.com/Technologeek/gprm-cli/blob/main/LICENSE
 - [GPRM Web App](https://gprm.itsvg.in) - The original inspiration for this CLI tool
 - [Modern.js](https://modernjs.dev/) - The web framework used
 - [Biome](https://biomejs.dev/) - The toolchain for web projects used for linting and formatting
+
+## Supported Technologies
+
+GPRM supports a wide range of technologies. Here's a comprehensive list organized by category:
+
+### Languages
+| | | | |
+|------------|------------|------------|------------|
+| Apache Groovy | Assembly Script | C | C# |
+| C++ | Clojure | Crystal | CSS3 |
+| Dart | Elixir | Elm | Erlang |
+| Fortran | Go/Golang | GraphQL | Haskell |
+| HTML5 | Java | JavaScript | Julia |
+| Kotlin | LaTeX | Lua | Markdown |
+| Nim | Nix | Objective-C | OCaml |
+| Octave | Org Mode | Perl | PHP |
+| PowerShell | Python | R | ReScript |
+| Ruby | Rust | Scala | Shell Script |
+| Solidity | Swift | TypeScript | Windows Terminal |
+| YAML | Zig | | |
+
+### Frameworks & Libraries
+| | | | |
+|------------|------------|------------|------------|
+| .NET | AdonisJS | Alpine.js | Anaconda |
+| Angular | Angular.js | Ant Design | Apollo GraphQL |
+| Astro | Aurelia | Backbone.js | Bootstrap |
+| Buefy | Bun | Capacitor | Celery |
+| Chakra UI | Chart.js | CodeIgniter | Context API |
+| DaisyUI | Deno JS | Directus | Django |
+| DjangoREST | Drupal | Electron.js | Ember |
+| Expo | Express.js | FastAPI | Fastify |
+| Flask | Flutter | Framer | Gatsby |
+| Green Sock | Gulp | Haxe | Hugo |
+| Ionic | Jasmine | Jest | Joomla |
+| jQuery | JWT | Laravel | Less |
+| MUI | Meteor JS | Mantine | NestJS |
+| Next.js | Node.js | Nodemon | Node-RED |
+| Nuxt.js | OpenCV | OpenGL | P5.js |
+| PNPM | Pandas | Phoenix | Pinia |
+| Playwright | Polymer | Prefect | Prisma |
+| Processing | PyCharm | PyTorch | Qiskit |
+| Quasar | RabbitMQ | Rails | React |
+| React Native | React Query | React Router | ReactiveX |
+| Redux | Remix | Rollup | ROS |
+| Ruby on Rails | RxJS | RxDB | Sass |
+| Scikit-learn | SciPy | Selenium | Semantic UI React |
+| Sentry | Socket.io | Solid JS | Spring |
+| Spring Boot | Strapi | Styled Components | Stylus |
+| Svelte | Symfony | Tailwind CSS | Tauri |
+| TensorFlow | Three.js | Thymeleaf | Uno CSS |
+| Unity | Unreal Engine | Vaadin | Vim |
+| Vite | Vue.js | Vuetify | Webpack |
+| Windi CSS | Xamarin | Yarn | |
+
+### Hosting & Cloud Platforms
+| | | | |
+|------------|------------|------------|------------|
+| Alibaba Cloud | Azure | Cloudflare | Codeberg |
+| Datadog | DigitalOcean | Firebase | Glitch |
+| Google Cloud | Heroku | Linode | Netlify |
+| Oracle | OpenStack | OVH | PythonAnywhere |
+| Render | Scaleway | Vercel | Vultr |
+
+### Databases & ORMs
+| | | | |
+|------------|------------|------------|------------|
+| Amazon DynamoDB | Cassandra | Cockroach Labs | Couchbase |
+| Firebase | InfluxDB | MariaDB | MusicBrainz |
+| Microsoft SQL Server | MongoDB | MySQL | Neo4j |
+| PlanetScale | Postgres | Realm | Redis |
+| Single Store | SQLite | Supabase | SurrealDB |
+| Teradata | Hibernate | Prisma | Sequelize |
+| Quill | | | |
+
+### Design Tools
+| | | | |
+|------------|------------|------------|------------|
+| Adobe Suite | Affinity Designer | Affinity Photo | Aseprite |
+| Blender | Canva | Dribbble | Figma |
+| Framer | GIMP | Inkscape | InVision |
+| Krita | Material Design | Proto.io | Sketch |
+| Storybook | | | |
+
+### DevOps & Version Control
+| | | | |
+|------------|------------|------------|------------|
+| Apache (various) | Bitbucket | CircleCI | CodePen |
+| Docker | ESLint | Elasticsearch | Gerrit |
+| GitBook | Gitea | GitHub | GitHub Actions |
+| GitHub Pages | GitLab | Gradle | Grafana |
+| Gunicorn | Jenkins | Kubernetes | Mercurial |
+| NGINX | Perforce Helix | Prometheus | Terraform |
+
+### Other Tools & Platforms
+| | | | |
+|------------|------------|------------|------------|
+| Airbnb | Alfred | Ansible | Aqua Sec |
+| Arduino | Babel | Bitwarden | Cisco |
+| CMake | CodeCov | Confluence | Crowdin |
+| Espressif | Home Assistant | Homebridge | Jellyfin |
+| Jira | Meta | Mosquitto | Notion |
+| OpenSea | Packer | Pi-Hole | Plex |
+| Postman | Power BI | Prezi | Rancher |
+| Raspberry Pi | SonarLint | SonarQube | Splunk |
+| Swagger | Tor | Trello | Twilio |
+| Uber | Ubiquiti | Vagrant | WireGuard |
+| XFCE | Zigbee | | |
+
+When specifying technologies in your GPRM configuration, use the exact names as listed above. The search is case-insensitive, so you can use lowercase if you prefer.
+
+For the most up-to-date list of supported technologies, refer to the `techData.ts` file in the GPRM source code.

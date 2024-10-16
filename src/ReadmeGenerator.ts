@@ -7,8 +7,8 @@ import {
   TrophiesSection,
   VisitorsSection,
 } from './sections';
-import { fetchTechData } from './utils/fetchTechData';
 import { generateFundingLinks, socialIcons } from './utils/socialIcons';
+import { getTechData } from './utils/techData';
 import { type Theme, getRandomTheme, isValidTheme } from './utils/themes';
 
 interface ReadmeOptions {
@@ -55,16 +55,8 @@ export class ReadmeGenerator {
   constructor(private options: ReadmeOptions) {
     this.theme = this.resolveTheme(options.theme);
     this.initializeSections();
-    this.initTechData();
   }
 
-  private async initTechData() {
-    try {
-      this.techData = await fetchTechData();
-    } catch (error) {
-      console.error('Failed to initialize tech data:', error);
-    }
-  }
   private resolveTheme(theme?: string): Theme {
     if (theme && isValidTheme(theme)) {
       return theme;
@@ -79,26 +71,15 @@ export class ReadmeGenerator {
       .join('\n');
   }
 
-  public generateTechnologies(technologies: string[]): string {
-    if (!this.techData) {
-      console.warn('Tech data not available');
-      return '';
-    }
-
+  private generateTechnologies(technologies: string[]): string {
+    const techData = getTechData();
     return technologies
       .map(tech => {
-        const lowercaseTech = tech.toLowerCase();
-        for (const category in this.techData) {
-          const found = this.techData[category].find(
-            (item: { label: string }) =>
-              item.label.toLowerCase() === lowercaseTech,
-          );
-          if (found) {
-            return found.url;
-          }
-        }
-        // Fallback for technologies not found in the data
-        return `![${tech}](https://img.shields.io/badge/-${tech}-lightgrey?style=for-the-badge)`;
+        const url = techData.get(tech.toLowerCase());
+        return (
+          url ||
+          `![${tech}](https://img.shields.io/badge/-${tech}-lightgrey?style=for-the-badge)`
+        );
       })
       .join(' ');
   }
@@ -121,7 +102,7 @@ export class ReadmeGenerator {
       }
       // technologies
       if (this.options.technologies && this.options.technologies.length > 0) {
-        readme += '\n\n## Technologies I know\n\n';
+        readme += '\n\n## 💻 Technologies I know\n\n';
         readme += this.generateTechnologies(this.options.technologies);
       }
 
@@ -130,7 +111,7 @@ export class ReadmeGenerator {
         this.options.socialPlatforms &&
         Object.keys(this.options.socialPlatforms).length > 0
       ) {
-        readme += '\n\n## Connect with me\n\n';
+        readme += '\n\n## 🌐 Connect with me\n\n';
         readme += this.generateSocialLinks(this.options.socialPlatforms);
       }
 
@@ -138,7 +119,7 @@ export class ReadmeGenerator {
         this.options.fundingLinks &&
         Object.keys(this.options.fundingLinks).length > 0
       ) {
-        readme += '\n\n## Support my work\n\n';
+        readme += '\n\n## 💰 Support my work\n\n';
         readme += generateFundingLinks(this.options.fundingLinks);
       }
 
