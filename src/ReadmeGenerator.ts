@@ -81,7 +81,7 @@ export class ReadmeGenerator {
           `![${tech}](https://img.shields.io/badge/-${tech}-lightgrey?style=for-the-badge)`
         );
       })
-      .join(' ');
+      .join('\n');
   }
 
   private initializeSections() {

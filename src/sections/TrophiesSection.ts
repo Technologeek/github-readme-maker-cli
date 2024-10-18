@@ -5,7 +5,7 @@ export class TrophiesSection extends BaseSection {
     return `
 ## 🏆 GitHub Trophies
 
-    [![${this.username}'s Trophies](https://github-profile-trophy.vercel.app/?username=${this.username}&theme=${this.theme}&no-frame=false&no-bg=true&margin-w=4)](https://github-profile-trophy.vercel.app/?username=${this.username}&theme=${this.theme}&no-frame=false&no-bg=true&margin-w=4)
+[![${this.username}'s Trophies](https://github-profile-trophy.vercel.app/?username=${this.username}&theme=${this.theme}&no-frame=false&no-bg=true&margin-w=4)](https://github-profile-trophy.vercel.app/?username=${this.username}&theme=${this.theme}&no-frame=false&no-bg=true&margin-w=4)
     `;
   }
 }

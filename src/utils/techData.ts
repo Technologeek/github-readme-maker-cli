@@ -1,4 +1,4 @@
-/*  I actually don't like to have a local copy of the data that remotely exists here https://raw.githubusercontent.com/VishwaGauravIn/github-profile-readme-maker/refs/heads/main/data/tech.js
+/*  I actually don't think it's a good idea to have a local copy of the data that remotely exists here https://raw.githubusercontent.com/VishwaGauravIn/github-profile-readme-maker/refs/heads/main/data/tech.js
 but fetching it from the remote source, formatting it and then using it here is a bit of an expensive operation.
 I'll just keep this file locally for now.
 */
