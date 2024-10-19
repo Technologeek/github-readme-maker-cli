@@ -21,6 +21,10 @@ GPRM CLI is a command-line interface tool for generating beautiful GitHub profil
 - Multiple themes support
 - Easy to use CLI interface
 
+# 📋 Requirements
+
+- Node.js version 18 or higher
+
 ## 🛠 Installation
 
 You can install GPRM CLI globally using npm or yarn:
