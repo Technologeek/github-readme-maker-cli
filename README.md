@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/gprm-cli"><img src="https://img.shields.io/npm/v/gprm-cli.svg" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/gprm-cli"><img src="https://img.shields.io/npm/dm/gprm-cli.svg" alt="npm downloads"></a>
-  <a href="https://github.com/Technologeek/github-readme-maker-cli/LICENSE"><img src="https://img.shields.io/github/license/Technologeek/github-readme-maker-cli.svg" alt="license"></a>
+  <a href="https://github.com/Technologeek/github-readme-maker-cli/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Technologeek/github-readme-maker-cli.svg" alt="license"></a>
 </p>
 
 GPRM CLI is a command-line interface tool for generating beautiful GitHub profile READMEs. It's the CLI version of the popular [GPRM web application](https://gprm.itsvg.in), bringing all the power and flexibility of GPRM to your terminal.
@@ -167,13 +167,10 @@ After generating your README, feel free to edit it further on GitHub to personal
 
 Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/Technologeek/github-readme-maker-cli/issues).
 
-## 📜 License
-
-This project is [MIT](https://github.com/Technologeek/github-readme-maker-cli/LICENSE) licensed.
 
 ## 🙏 Acknowledgements
 
-- [GPRM Web App](https://gprm.itsvg.in) - The original inspiration for this CLI tool
+- [GPRM Web App](https://gprm.itsvg.in) - The original inspiration for this CLI tool.
 
 
 ### Languages
