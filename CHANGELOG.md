@@ -1,5 +1,11 @@
 # gprm-cli
 
+## 1.3.0
+
+### Minor Changes
+
+- Fixed Technologies Section to support from comma seperated strings
+
 ## 1.2.0
 
 ### Minor Changes

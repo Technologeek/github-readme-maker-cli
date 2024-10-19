@@ -31,7 +31,7 @@ program
   )
   .option(
     '-p, --tech <technologies...>',
-    chalk.magenta('💻 Technologies you know (space-separated)'),
+    chalk.magenta('💻 Technologies you know (comma-separated)'),
   )
   .option(
     '-r, --top-repos',
@@ -58,7 +58,7 @@ program
       topLangs?: boolean;
       social?: string[];
       funding?: string[];
-      tech?: string[];
+      tech?: string | string[];
       output?: string;
     }) => {
       try {
@@ -67,11 +67,21 @@ program
         const socialPlatforms = parseKeyValuePairs(options.social);
         const fundingLinks = parseKeyValuePairs(options.funding);
 
+        let technologies: string[] = [];
+        if (options.tech) {
+          if (Array.isArray(options.tech)) {
+            // commander parses the tech option as an array of just one string
+            technologies = options.tech[0].split(',').map(tech => tech.trim());
+          } else {
+            technologies = options.tech.split(',').map(tech => tech.trim());
+          }
+        }
+
         await showAnimatedMessage('Generating README...');
         const readmeGenerator = new ReadmeGenerator({
           ...options,
           socialPlatforms,
-          technologies: options.tech || [],
+          technologies,
           fundingLinks,
         });
 

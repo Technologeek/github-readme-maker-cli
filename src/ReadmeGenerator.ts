@@ -104,6 +104,7 @@ export class ReadmeGenerator {
       if (this.options.technologies && this.options.technologies.length > 0) {
         readme += '\n\n## 💻 Technologies I know\n\n';
         readme += this.generateTechnologies(this.options.technologies);
+        readme += '\n';
       }
 
       // social media links

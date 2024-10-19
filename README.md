@@ -88,7 +88,7 @@ gprm generate \
   --top-repos \
   --visitors \
   --social twitter:yourtwitter linkedin:yourlinkedin github:yourgithub instagram:yourinstagram \
-  --tech "JavaScript TypeScript React Node.js Python Docker" \
+  --tech "JavaScript, TypeScript, Shell Script, React, Node.js, Python, Docker" \
   --funding paypal:yourusername ko-fi:yourusername github:yourgithub patreon:yourpatreon \
   --output ./custom-README.md
 ```
@@ -126,7 +126,7 @@ gprm generate --help
 | `-p, --top-repos` | Include top contributed repositories |
 | `-v, --visitors` | Include visitors count |
 | `-m, --social <socials...>` | Include social media links (format: platform:username) |
-| `-c, --tech <technologies...>` | Technologies you know (space-separated) |
+| `-c, --tech <technologies...>` | Technologies you know (comma-separated list) |
 | `-f, --funding <links...>` | Include funding links (format: platform:username) |
 | `-o, --output <path>` | Output file path (default: ./README.md) |
 

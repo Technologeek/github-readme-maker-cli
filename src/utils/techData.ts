@@ -1335,15 +1335,18 @@ const data = {
 };
 
 export function getTechData(): Map<string, string> {
-  // Flatten the object structure
-  const flattenedData = Object.values(data).flat();
+  const techMap = new Map<string, string>();
 
-  const techMap = new Map(
-    flattenedData.map((item: { label: string; url: string }) => [
-      item.label.toLowerCase(),
-      item.url,
-    ]),
-  );
+  // Combine all categories (lang, frameworks, etc.) into one map
+  for (const category in data) {
+    for (const item of data[category as keyof typeof data]) {
+      techMap.set(item.label.toLowerCase(), item.url);
+      // without spaces for multi-word technologies
+      if (item.label.includes(' ')) {
+        techMap.set(item.label.toLowerCase().replace(/\s+/g, ''), item.url);
+      }
+    }
+  }
 
   return techMap;
 }
