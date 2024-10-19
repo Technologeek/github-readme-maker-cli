@@ -1,13 +1,13 @@
 # GPRM CLI: GitHub Profile README Maker
 
 <p align="center">
-  <img src="https://your-logo-url-here.png" alt="GPRM CLI Logo" width="200"/>
+  <img src="https://gprm.itsvg.in/logo.png" alt="GPRM CLI Logo" width="200"/>
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/gprm-cli"><img src="https://img.shields.io/npm/v/gprm-cli.svg" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/gprm-cli"><img src="https://img.shields.io/npm/dm/gprm-cli.svg" alt="npm downloads"></a>
-  <a href="https://github.com/your-username/gprm-cli/blob/main/LICENSE"><img src="https://img.shields.io/github/license/your-username/gprm-cli.svg" alt="license"></a>
+  <a href="https://github.com/Technologeek/github-readme-maker-cli/LICENSE"><img src="https://img.shields.io/github/license/Technologeek/github-readme-maker-cli.svg" alt="license"></a>
 </p>
 
 GPRM CLI is a command-line interface tool for generating beautiful GitHub profile READMEs. It's the CLI version of the popular [GPRM web application](https://gprm.itsvg.in), bringing all the power and flexibility of GPRM to your terminal.
@@ -33,28 +33,46 @@ yarn global add gprm-cli
 
 ## 🎨 Supported Themes
 
-GPRM CLI supports the following themes:
+You can specify a theme using the `--theme` option.
 
-- `default`
-- `radical`
-- `merko`
-- `gruvbox`
-- `tokyonight`
-- `onedark`
-- `cobalt`
-- `synthwave`
-- `highcontrast`
-- `dracula`
+| Theme | Theme | Theme | Theme |
+|-------|-------|-------|-------|
+| default | default_repocard | transparent | shadow_red |
+| shadow_green | shadow_blue | dark | radical |
+| merko | gruvbox | gruvbox_light | tokyonight |
+| onedark | cobalt | synthwave | highcontrast |
+| dracula | prussian | monokai | vue |
+| vue-dark | shades-of-purple | nightowl | buefy |
+| blue-green | algolia | great-gatsby | darcula |
+| bear | solarized-dark | solarized-light | chartreuse-dark |
+| nord | gotham | material-palenight | graywhite |
+| vision-friendly-dark | ayu-mirage | midnight-purple | calm |
+| flag-india | omni | react | jolly |
+| maroongold | yeblu | blueberry | slateorange |
+| kacho_ga | outrun | ocean_dark | city_lights |
+| github_dark | github_dark_dimmed | discord_old_blurple | aura_dark |
+| panda | noctis_minimus | cobalt2 | swift |
+| aura | apprentice | moltack | codeSTACKr |
+| rose_pine | catppuccin_latte | catppuccin_mocha | date_night |
+| one_dark_pro | rose | holi | neon |
+| blue_navy | calm_pink | ambient_gradient | |
+
+Example usage:
+```bash
+gprm generate --username yourusername --theme nord
+```
+
+If no theme is specified, a random theme will be selected.
 
 ## 🚦 Usage
 
 Here's a basic example of how to use GPRM CLI:
 
 ```bash
-gprm generate --username yourusername --stats --streaks
+gprm generate --username yourusername --theme merko --stats --streaks
 ```
 
-This will generate a README.md file in the current directory with your GitHub stats, streaks, trophies, and more.
+This will generate a README.md file in the current directory with your GitHub stats, streaks with merko theme.
 
 
 For a more comprehensive README, you can use:
@@ -112,10 +130,14 @@ gprm generate --help
 | `-f, --funding <links...>` | Include funding links (format: platform:username) |
 | `-o, --output <path>` | Output file path (default: ./README.md) |
 
+## Supported Technologies
+
+When specifying languages or technologies in your configuration, please use the exact names as listed in the [Languages](#languages) section below.
+
 ## 🔮 Upcoming Features
 
-- Interactive mode for easier README generation (Work in Progress)
-- Support for `.gprmrc` configuration file (Work in Progress)
+- Interactive mode for easier README generation.
+- Support for `.gprmrc` configuration file.
 
 ## 🛠️ Development
 
@@ -124,8 +146,8 @@ This project is bootstrapped with [Modern.js](https://modernjs.dev/) and uses [B
 To set up the development environment:
 
 ```bash
-git clone https://github.com/Technologeek/gprm-cli.git
-cd gprm-cli
+git clone git@github.com:Technologeek/github-readme-maker-cli.git
+cd github-readme-maker-cli
 yarn install
 ```
 To Build the project:
@@ -139,25 +161,20 @@ yarn build --watch
 
 ## 📝 Note
 
-After generating your README, feel free to edit it further on GitHub to personalize it even more!
+After generating your README, feel free to edit it further on GitHub to personalize it even more.
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/Technologeek/gprm-cli/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/Technologeek/github-readme-maker-cli/issues).
 
 ## 📜 License
 
-This project is [MIT](https://github.com/Technologeek/gprm-cli/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/Technologeek/github-readme-maker-cli/LICENSE) licensed.
 
 ## 🙏 Acknowledgements
 
 - [GPRM Web App](https://gprm.itsvg.in) - The original inspiration for this CLI tool
-- [Modern.js](https://modernjs.dev/) - The web framework used
-- [Biome](https://biomejs.dev/) - The toolchain for web projects used for linting and formatting
 
-## Supported Technologies
-
-GPRM supports a wide range of technologies. Here's a comprehensive list organized by category:
 
 ### Languages
 | | | | |
