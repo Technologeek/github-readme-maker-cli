@@ -27,13 +27,60 @@ GPRM CLI is a command-line interface tool for generating beautiful GitHub profil
 
 ## 🛠 Installation
 
-You can install GPRM CLI globally using npm or yarn:
+You can run GPRM CLI without installing it globally using `npx`:
+
+```bash
+npx gprm-cli generate --username yourusername --theme merko --stats --streaks
+```
+
+If you prefer you can install GPRM CLI globally using npm or yarn:
 
 ```bash
 npm install -g gprm-cli
 # or
 yarn global add gprm-cli
 ```
+## 🎨 Examples
+
+Here are some examples of how to use GPRM CLI with different themes and features:
+
+### Example 1: Basic Profile with Merko Theme
+
+```bash
+npx gprm-cli generate --username yourusername --theme merko --stats --streaks
+```
+
+This command generates a README with your GitHub stats and streaks using the Merko theme.
+
+# Hi there 👋, I'm technologeek
+
+
+## 📊  GitHub Stats
+
+![technologeek's GitHub stats](https://github-readme-stats.vercel.app/api?username=technologeek&theme=merko&hide_border=false&include_all_commits=false&count_private=false)
+
+## 🔥 GitHub Streak
+
+[![technologeek's GitHub Streaks](https://github-readme-streak-stats.herokuapp.com?user=technologeek&theme=merko)](https://git.io/streak-stats)
+
+
+### Example 2: Minimal Profile with Nord Theme
+
+```bash
+npx gprm-cli generate --username yourusername --theme nord --top-langs --visitors
+```
+This command creates a minimal README focusing on top languages and visitor count with the Nord theme.
+
+# Hi there 👋, I'm technologeek
+
+
+## 🌐 Top Languages
+
+[![technologeek's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=technologeek&theme=nord&hide=c%23,html,css&layout=compact)](https://github-readme-stats.vercel.app/api/top-langs/?username=technologeek&theme=nord&hide=c%23,html,css&layout=compact)
+
+## 👀 Profile Views
+
+[![](https://visitcount.itsvg.in/api?id=technologeek&icon=0&color=2)](https://visitcount.itsvg.in)
 
 ## 🎨 Supported Themes
 
